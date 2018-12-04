@@ -17,7 +17,7 @@ public:
 
 	//Triangle GetTriangle() const;
 
-	virtual ~TStackItem();
+	virtual ~TStackItem() {};
 private:
 	std::shared_ptr<Figure> item;
 	std::shared_ptr<TStackItem> next;
