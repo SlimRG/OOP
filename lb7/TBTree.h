@@ -74,7 +74,9 @@ public:
 	}
 
 	template <class A> friend std::ostream& operator<<(std::ostream& os, TBTree<A>& obj) {
+		printf("-------- пюгдек ---------\n");
 		obj.Print(obj.root, 0);
+		printf("---- йнмеж пюгдекю -----\n");
 		return os;
 	}
 
@@ -138,8 +140,10 @@ public:
 	}
 	
 	template <class A> friend std::ostream& operator<<(std::ostream& os, TBTree<A>& obj) {
-	obj.Print(obj.root, 0);
-	return os;
+		printf("-------- пюгдек ---------\n");
+		obj.Print(obj.root, 0);
+		printf("---- йнмеж пюгдекю -----\n");
+		return os;
 	}
 
 	TNode<T*>* root;

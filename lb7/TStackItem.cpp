@@ -30,7 +30,8 @@ template <class T>std::shared_ptr<T> TStackItem<T>::Remove() {
 }
 
 template <class A> std::ostream &operator<<(std::ostream &os, const TStackItem<A> &obj) {
-	os << obj.item << std::endl;
+	std::shared_ptr<A> fig = obj.item;
+	os << *fig;
 	return os;
 }
 

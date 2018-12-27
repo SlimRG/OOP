@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <cstdlib>
 #include <memory>
 #include <ratio>
@@ -16,104 +16,74 @@
 #include "IRemoveCriteriaBySquare.h"
 #include "IRemoveCriteriaAll.h"
 
+int main(int argc, char** argv) {
+
+	setlocale(LC_CTYPE, "rus");
+
+	TStack < TBTree < std::shared_ptr <Figure> >, Figure > cookie;
 
 
-void TestAllocationBlock() {
-    std::cout << "Allocation Block Demonstration" << std::endl;
-    
-    TAllocationBlock allocator(sizeof(int), 10);
-    int* a1 = nullptr;
-    int* a2 = nullptr;
-    int* a3 = nullptr;
-    int* a4 = nullptr;
-    int* a5 = nullptr;
+	std::shared_ptr<Figure> ptr1 = std::make_shared<TRectangle>(1, 2);
+	std::shared_ptr<Figure> ptr2 = std::make_shared<TSquare>(1);
+	std::shared_ptr<Figure> ptr3 = std::make_shared<TTriangle>(1, 2, 3);
+	std::shared_ptr<Figure> ptr4 = std::make_shared<TRectangle>(2, 3);
+	std::shared_ptr<Figure> ptr5 = std::make_shared<TSquare>(2);
+	std::shared_ptr<Figure> ptr6 = std::make_shared<TSquare>(3);
+	std::shared_ptr<Figure> ptr7 = std::make_shared<TRectangle>(5, 6);
+	std::shared_ptr<Figure> ptr8 = std::make_shared<TTriangle>(3, 2, 1);
+	std::shared_ptr<Figure> ptr9 = std::make_shared<TSquare>(8);
+	
+	std::shared_ptr<Figure> ptr10 = std::make_shared<TRectangle>(1, 2);
+	std::shared_ptr<Figure> ptr20= std::make_shared<TSquare>(1);
+	std::shared_ptr<Figure> ptr30 = std::make_shared<TTriangle>(1, 2, 3);
+	std::shared_ptr<Figure> ptr40 = std::make_shared<TRectangle>(2, 3);
+	std::shared_ptr<Figure> ptr50 = std::make_shared<TSquare>(2);
+	std::shared_ptr<Figure> ptr60 = std::make_shared<TSquare>(3);
+	std::shared_ptr<Figure> ptr70 = std::make_shared<TRectangle>(5, 6);
+	std::shared_ptr<Figure> ptr80 = std::make_shared<TTriangle>(3, 2, 1);
+	std::shared_ptr<Figure> ptr90 = std::make_shared<TSquare>(8);
+	
+	cookie.Insert(ptr1);
+	cookie.Insert(ptr2);
+	cookie.Insert(ptr3);
+	cookie.Insert(ptr4);
+	cookie.Insert(ptr5);
+	cookie.Insert(ptr6);
+	cookie.Insert(ptr7);
+	cookie.Insert(ptr8);
+	cookie.Insert(ptr9);
+	std::cout << cookie << std::endl;
+	/*
+	std::cout << cookie << std::endl;
 
-    a1 = (int*) allocator.Allocate();
-    *a1 = 1;
-    std::cout << "a1 pointer value: " << *a1 << std::endl;
-    a2 = (int*) allocator.Allocate();
-    *a2 = 2;
-    std::cout << "a2 pointer value: " << *a2 << std::endl;
-    a3 = (int*) allocator.Allocate();
-    *a3 = 3;
-    std::cout << "a3 pointer value: " << *a3 << std::endl;
+	cookie.Insert(ptr10);
+	cookie.Insert(ptr20);
+	cookie.Insert(ptr30);
+	cookie.Insert(ptr40);
+	cookie.Insert(ptr50);
+	cookie.Insert(ptr60);
+	cookie.Insert(ptr70);
+	cookie.Insert(ptr80);
+	cookie.Insert(ptr90);
 
-    allocator.Deallocate(a1);
-    allocator.Deallocate(a3);
+	*/
 
-    a4 = (int*) allocator.Allocate();
-    *a4 = 4;
-    std::cout << "a4 pointer value: " << *a4 << std::endl;
-    a5 = (int*) allocator.Allocate();
-    *a5 = 5;
-    std::cout << "a5 pointer value: " << *a5 << std::endl;
 
-    std::cout << "a1 pointer value: " << *a1 << std::endl;
-    std::cout << "a2 pointer value: " << *a2 << std::endl;
-    std::cout << "a3 pointer value: " << *a3 << std::endl;
 
-    allocator.Deallocate(a2);
-    allocator.Deallocate(a4);
-    allocator.Deallocate(a5);
-}
-
-void BenchmarAllcators() {
-	std::cout << std::endl << "Benchmark" << std::endl;
-	using namespace std::chrono;
-	int** arr = (int**) malloc(sizeof(int*) * 1000);
-	high_resolution_clock::time_point ownAllocBegin = high_resolution_clock::now();
-	TAllocationBlock allocator(sizeof(int), 10000);
-	for(int i = 0; i < 1000; i++) {
-		arr[i] = (int*) allocator.Allocate();
-	}
-	for(int i = 0; i < 1000; i++) {
-		allocator.Deallocate(arr[i]);
-	}
-	high_resolution_clock::time_point ownAllocEnd = high_resolution_clock::now();
-	std::cout << duration_cast<microseconds>(ownAllocEnd - ownAllocBegin).count() << std::endl;
-	high_resolution_clock::time_point AllocBegin = high_resolution_clock::now();
-	std::vector <int*> vect(1000);
-	for(int i = 0; i < 1000; i++) {
-		vect[i] = (int*) malloc(sizeof(int));
-	}
-	for(int i = 0; i < 1000; i++) {
-		free(vect[i]);
-	}
-	high_resolution_clock::time_point AllocEnd = high_resolution_clock::now();
-	std::cout << duration_cast<microseconds>(AllocEnd - AllocBegin).count() << std::endl;
-}
-
-int main() {
-    // TestAllocationBlock();
-    // TesTStack();
-    std::shared_ptr<Figure> ptr1 = std::make_shared<TRectangle>(1, 2);
-    std::shared_ptr<Figure> ptr2 = std::make_shared<TTriangle>(1, 2, 3);
-    std::shared_ptr<Figure> ptr3 = std::make_shared<TSquare>(1);
-    std::shared_ptr<Figure> ptr4 = std::make_shared<TRectangle>(1, 2);
-    std::shared_ptr<Figure> ptr5 = std::make_shared<TSquare>(2);
-    std::shared_ptr<Figure> ptr6 = std::make_shared<TSquare>(3);
-    std::shared_ptr<Figure> ptr7 = std::make_shared<TRectangle>(4, 2);
-    std::shared_ptr<Figure> ptr8 = std::make_shared<TSquare>(3);
-    std::shared_ptr<Figure> ptr9 = std::make_shared<TTriangle>(4, 2, 4);
-    // tr.push(ptr1);
-    // tr.push(ptr2);
-    // tr.push(ptr3);  
-    TStack < TBTree < std::shared_ptr <Figure> >, Figure > tq;
-    tq.Pop(ptr1);
-    tq.Insert(ptr2);
-    tq.Insert(ptr3);
-    tq.Insert(ptr4);
-    tq.Insert(ptr5);
-    tq.Insert(ptr6);
-    tq.Insert(ptr7);
-    tq.Insert(ptr8);
-    tq.Insert(ptr9);
-    std::cout << tq << std::endl;
-    IRemoveCriteriaBySquare<double> criteria(2.0);
-    tq.RemoveItemSq(&criteria);
-    std::cout << tq << std::endl;
-    IRemoveCriteriaAll<Figure, TSquare> criteriaAll;
-    tq.RemoveItemAll(&criteriaAll);
-    std::cout << tq << std::endl;
+	std::cout << std::endl;
+	IRemoveCriteriaBySquare<double> criteria(2);
+	std::cout << std::endl;
+	cookie.RemoveItemSq(&criteria);
+	std::cout << std::endl;
+	std::cout << cookie << std::endl;
+	std::cout << std::endl;
+	IRemoveCriteriaAll<Figure, TSquare> criteriaAll;
+	std::cout << std::endl;
+	cookie.RemoveItemAll(&criteriaAll);
+	std::cout << cookie << std::endl;
+	
+	system("pause");
 	return 0;
 }
+
+

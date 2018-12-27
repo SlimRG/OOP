@@ -24,7 +24,7 @@ double TTriangle::Square() {
 }
 
 void TTriangle::Print() {
-	std::cout << "Треугольник:" << std::endl;
+	std::cout << "Треугольник:  ";
 	std::cout << "a=" << side_a << ", b=" << side_b << ", c=" << side_c << std::endl;
 }
 

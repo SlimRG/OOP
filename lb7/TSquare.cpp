@@ -20,7 +20,7 @@ double TSquare::Square() {
 }
 
 void TSquare::Print() {
-	std::cout << " вадрат:" << std::endl;
+	std::cout << " вадрат: ";
 	std::cout << "a=b=c=d=" << side_a << std::endl;
 }
 

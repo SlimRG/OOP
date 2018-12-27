@@ -23,8 +23,8 @@ double TRectangle::Square() {
 }
 
 void TRectangle::Print() {
-	std::cout << "Прямоугольник:" << std::endl;
-	std::cout << "a=" << side_a << ", b=" << side_b << std::endl;
+	std::cout << "Прямоугольник: ";
+	std::cout << "a=b=c=d=" << side_a << std::endl;
 }
 
 unsigned char TRectangle::Type() {
