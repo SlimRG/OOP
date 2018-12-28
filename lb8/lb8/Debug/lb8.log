@@ -1,0 +1,14 @@
+﻿  MAIN.CPP
+c:\users\bbcca\source\repos\lb8\lb8\main.cpp(39): warning C4473: "scanf_s": передано недостаточно аргументов для строки формата
+  c:\users\bbcca\source\repos\lb8\lb8\main.cpp(39): note: заполнители и их параметры ожидают переменное число аргументов в количестве 2, но было предоставлено 1
+  c:\users\bbcca\source\repos\lb8\lb8\main.cpp(39): note: отсутствующий вариативный аргумент "2" требуется для строки форматирования "%c"
+  c:\users\bbcca\source\repos\lb8\lb8\main.cpp(39): note: этот аргумент используется в качестве размера буфера
+c:\users\bbcca\source\repos\lb8\lb8\main.cpp(71): warning C4473: "scanf_s": передано недостаточно аргументов для строки формата
+  c:\users\bbcca\source\repos\lb8\lb8\main.cpp(71): note: заполнители и их параметры ожидают переменное число аргументов в количестве 2, но было предоставлено 1
+  c:\users\bbcca\source\repos\lb8\lb8\main.cpp(71): note: отсутствующий вариативный аргумент "2" требуется для строки форматирования "%c"
+  c:\users\bbcca\source\repos\lb8\lb8\main.cpp(71): note: этот аргумент используется в качестве размера буфера
+c:\users\bbcca\source\repos\lb8\lb8\main.cpp(78): warning C4473: "scanf_s": передано недостаточно аргументов для строки формата
+  c:\users\bbcca\source\repos\lb8\lb8\main.cpp(78): note: заполнители и их параметры ожидают переменное число аргументов в количестве 2, но было предоставлено 1
+  c:\users\bbcca\source\repos\lb8\lb8\main.cpp(78): note: отсутствующий вариативный аргумент "2" требуется для строки форматирования "%c"
+  c:\users\bbcca\source\repos\lb8\lb8\main.cpp(78): note: этот аргумент используется в качестве размера буфера
+  lb8.vcxproj -> c:\Users\BBCCA\source\repos\lb8\Debug\lb8.exe
